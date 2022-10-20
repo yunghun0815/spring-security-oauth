@@ -1,5 +1,5 @@
 # spring-security-oauth
-security form 로그인과 oauth2.0 (네이버, 구글) 로그인 구현
+security form 로그인과 oauth2.0 (네이버, 구글) 로그인 구현 
 
 ## 1. spring security
 #### 기존에 사용하던 WebSecurityConfigurerAdapter가 deprecated 되어 상속이 아닌 Bean 주입받아 구현
