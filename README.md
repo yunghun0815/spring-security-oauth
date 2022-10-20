@@ -39,7 +39,7 @@ security form 로그인과 oauth2.0 (네이버, 구글) 로그인 구현
 ```
 #### 로그인 서비스 UserDetailService 상속받아 구현
 ``` java
-  @Service
+@Service
 public class MemberServiceImpl implements MemberService, UserDetailsService{
 
 	@Autowired
@@ -48,19 +48,19 @@ public class MemberServiceImpl implements MemberService, UserDetailsService{
 	@Autowired
 	PasswordEncoder passwordEncoder;
 	
-  //UserDetailsService method
+  	//UserDetailsService method
 	@Override
 	public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
 		MemberVO vo = memberDao.login(username);
 		
 		return User.builder()
-					.username(vo.getId())
-					.password(vo.getPassword())
-					.roles(vo.getRole())
-					.build();
+			   .username(vo.getId())
+			   .password(vo.getPassword())
+			   .roles(vo.getRole())
+			   .build();
 	}
   
-  //MemberSerivce method
+  	//MemberSerivce method
 	@Override 
 	public void signup(MemberVO vo) {
 		vo.setPassword(passwordEncoder.encode(vo.getPassword()));
@@ -101,14 +101,14 @@ public class SocailOAuth2UserService extends DefaultOAuth2UserService{
 		}
 		
 		MemberVO vo = MemberVO.builder()
-								.id(email)
-							   .name(name)
-							   .email(email)
-							   .password("social"+ System.nanoTime())
-							 //  .password(passwordEncoder.encode("social" + System.nanoTime()))
-							   .provider(registrationId)
-							   .role(Role.ROLE_USER.getTitle())
-							   .build();
+				      .id(email)
+				      .name(name)
+				      .email(email)
+				      .password("social"+ System.nanoTime())
+				      .provider(registrationId)
+				      .role(Role.ROLE_USER.getTitle())
+				      .build();
+				      
 		//처음 로그인 사용자 가입처리
 		if(memberDao.loginCheck(email) == 0) {
 			memberDao.oauthSignup(vo);
