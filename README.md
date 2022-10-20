@@ -87,7 +87,7 @@ public class SocailOAuth2UserService extends DefaultOAuth2UserService{
 		
 		Map<String, Object> attributes = oauth2User.getAttributes(); // oauth 유저 정보
 		
-        String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
+        	String userNameAttributeName = userRequest.getClientRegistration().getProviderDetails()
                 .getUserInfoEndpoint().getUserNameAttributeName(); // OAuth 로그인 시 키(pk)가 되는 값
 		String email = null;
 		String name = null;
